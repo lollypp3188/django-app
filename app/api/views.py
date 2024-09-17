@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from .serializers import ProjectSerializer
 from projects.models import Project, Review
 
+
 @api_view(['GET'])
 def get_routes(request):
     routes = [
@@ -18,11 +19,13 @@ def get_routes(request):
     ]
     return Response(routes)
 
+
 @api_view(['GET'])
 def get_projects(request):
     projects = Project.objects.all()
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
+
 
 @api_view(['GET'])
 def get_project(request, pk):
@@ -32,6 +35,7 @@ def get_project(request, pk):
         return Response(serializer.data)
     except Project.DoesNotExist:
         return Response({'error': 'Project not found'}, status=404)
+
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
