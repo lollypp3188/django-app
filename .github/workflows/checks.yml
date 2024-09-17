@@ -33,7 +33,7 @@ jobs:
       - name: Build and Test
         run: |
           docker-compose build
-          docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test"
+          docker-compose run --rm app sh -c "python manage.py test"
       
       - name: Lint
         run: docker-compose run --rm app sh -c "flake8"
