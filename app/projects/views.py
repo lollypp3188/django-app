@@ -17,12 +17,13 @@ from .utils import (
 
 def projects(request):
     projects, search_query = search_projects(request)
-
     custom_range, projects = paginator_projects(request, projects, 2)
 
     context = {
-        'projects': projects, 'search_query': search_query,
-        'custom_range': custom_range}
+        'projects': projects,
+        'search_query': search_query,
+        'custom_range': custom_range
+    }
     return render(request, 'projects/projects.html', context)
 
 
@@ -35,10 +36,10 @@ def project(request, pk):
         review.project = projectObj
         review.owner = request.user.profile
         review.save()
-        projectObj.get_vote_count
+        projectObj.get_vote_count()  # Method call should be followed by parentheses
         messages.success(request, 'Your review was successfully submitted!')
         return redirect('project', pk=projectObj.id)
-    context = {'project': project, 'form': form}
+    context = {'project': projectObj, 'form': form}
     return render(request, 'projects/single-project.html', context)
 
 
