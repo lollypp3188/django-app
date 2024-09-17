@@ -1,6 +1,4 @@
-# Use the Python image
 FROM python:3.11-alpine
-
 
 # Set environment variable
 ENV PYTHONUNBUFFERED=1
@@ -59,5 +57,3 @@ USER django-user
 
 # Start the application
 CMD ["run.sh"]
-
-
