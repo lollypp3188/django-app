@@ -73,7 +73,8 @@ def profiles(request):
     profiles, search_query = search_profiles(request)
     custom_range, profiles = paginator_profiles(request, profiles, 3)
     context = {
-        'profiles': profiles, 'search_query': search_query, 'custom_range': custom_range}
+        'profiles': profiles,
+        'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'users/profiles.html', context)
 
 
@@ -83,7 +84,8 @@ def user_profile(request, pk):
         description__exact="")
     other_skills = profile.skill_set.filter(description="")
     context = {
-        'profile': profile, 'top_skills': top_skills, 'other_skills': other_skills}
+        'profile': profile, 'top_skills': top_skills,
+        'other_skills': other_skills}
     return render(request, 'users/user-profile.html', context)
 
 

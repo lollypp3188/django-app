@@ -36,7 +36,7 @@ def project(request, pk):
         review.project = projectObj
         review.owner = request.user.profile
         review.save()
-        projectObj.get_vote_count()  # Method call should be followed by parentheses
+        projectObj.get_vote_count()
         messages.success(request, 'Your review was successfully submitted!')
         return redirect('project', pk=projectObj.id)
     context = {'project': projectObj, 'form': form}
