@@ -1,5 +1,6 @@
 # Use the Python image
-FROM python:3.11.9-alpine3.20
+FROM python:3.11-alpine
+
 
 # Set environment variable
 ENV PYTHONUNBUFFERED=1
