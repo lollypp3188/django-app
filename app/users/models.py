@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 import uuid
 
 
+from django.db import models
+import uuid
+
 class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, null=True, blank=True
@@ -14,8 +17,8 @@ class Profile(models.Model):
     short_intro = models.CharField(max_length=200, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(
-    null=True, blank=True, upload_to='profiles/', 
-    default='profiles/user-default.png'
+        null=True, blank=True, upload_to='profiles/',
+        default='profiles/user-default.png'
     )
     social_github = models.CharField(max_length=200, null=True, blank=True)
     social_twitter = models.CharField(max_length=200, null=True, blank=True)
