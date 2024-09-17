@@ -72,7 +72,8 @@ def register_user(request):
 def profiles(request):
     profiles, search_query = search_profiles(request)
     custom_range, profiles = paginator_profiles(request, profiles, 3)
-    context = {'profiles': profiles, 'search_query': search_query, 'custom_range': custom_range}
+    context = {
+        'profiles': profiles, 'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'users/profiles.html', context)
 
 
@@ -81,8 +82,8 @@ def user_profile(request, pk):
     top_skills = profile.skill_set.exclude(
         description__exact="")
     other_skills = profile.skill_set.filter(description="")
-    context = {'profile': profile, 'top_skills': top_skills,
-              'other_skills': other_skills}
+    context = {
+        'profile': profile, 'top_skills': top_skills, 'other_skills': other_skills}
     return render(request, 'users/user-profile.html', context)
 
 
@@ -145,8 +146,8 @@ def delete_skill(request, pk):
     skill = profile.skill_set.get(id=pk)
     if request.method == 'POST':
         skill.delete()
-        messages.success(request, 
-                        'Skill was deleted successfully!')
+        messages.success(
+            request, 'Skill was deleted successfully!')
         return redirect('account')
     context = {'object': skill}
     return render(request, 'delete_template.html', context)
@@ -157,7 +158,8 @@ def inbox(request):
     profile = request.user.profile
     message_requests = profile.messages.all()
     unread_count = message_requests.filter(is_read=False).count()
-    context = {'message_requests': message_requests, 'unread_count': unread_count}
+    context = {
+        'message_requests': message_requests, 'unread_count': unread_count}
     return render(request, 'users/inbox.html', context)
 
 
